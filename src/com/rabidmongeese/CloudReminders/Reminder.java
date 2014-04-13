@@ -5,11 +5,11 @@ package com.rabidmongeese.CloudReminders;
  */
 public class Reminder {
 
-    private int id;
+    private long id;
     private String text;
     private double longitude, latitude;
 
-    public Reminder(int id, String text, double longitude, double latitude) {
+    public Reminder(long id, String text, double longitude, double latitude) {
         this.id = id;
         this.text = text;
         this.longitude = longitude;
@@ -22,11 +22,11 @@ public class Reminder {
         this.latitude = latitude;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -53,5 +53,5 @@ public class Reminder {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    
+
 }
