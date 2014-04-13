@@ -22,6 +22,9 @@ public class Reminder {
         this.latitude = latitude;
     }
 
+    public Reminder () {
+    }
+
     public long getId() {
         return id;
     }
