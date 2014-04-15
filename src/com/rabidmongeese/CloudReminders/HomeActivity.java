@@ -36,6 +36,7 @@ public class HomeActivity extends Activity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        findViewById(R.id.bSignIn).setOnClickListener(this);
         
         bSignIn = (SignInButton) findViewById(R.id.bSignIn);
         bSignIn.setOnClickListener(this);
@@ -44,8 +45,6 @@ public class HomeActivity extends Activity implements
 		.addConnectionCallbacks(this)
 		.addOnConnectionFailedListener(this).addApi(Plus.API, null)
 		.addScope(Plus.SCOPE_PLUS_LOGIN).build();
-        
-
     }
 
     @Override
