@@ -23,12 +23,22 @@ public class TemporaryActivity extends Activity {
 	private void setListeners(){
 		
 		Button createReminder = (Button) findViewById(R.id.createReminderButton);
+		Button mapButton = (Button) findViewById(R.id.mapButton);
 		
 		createReminder.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(TemporaryActivity.this, CreateReminderActivity.class ));
+			}
+			
+		});
+		
+		mapButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(TemporaryActivity.this, MapActivity.class ));
 			}
 			
 		});

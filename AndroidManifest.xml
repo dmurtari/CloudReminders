@@ -4,9 +4,20 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <!-- Specify permissions for the Google Maps API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--
+         The following two permissions are not required to use
+	     Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-sdk android:minSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
@@ -16,12 +27,10 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.maps.v2.AIzaSyC5f_u9CLh_o90ZaWUxfiaXhPMf-pcEV9E"
-            android:value="AIzaSyC5f_u9CLh_o90ZaWUxfiaXhPMf-pcEV9E"
-            />
-        
+            android:value="AIzaSyC5f_u9CLh_o90ZaWUxfiaXhPMf-pcEV9E" />
+
         <activity
             android:name="com.rabidmongeese.CloudReminders.TemporaryActivity"
             android:label="@string/app_name" >
@@ -34,6 +43,10 @@
         <activity
             android:name="com.rabidmongeese.CloudReminders.CreateReminderActivity"
             android:label="@string/title_activity_create_reminder" >
+        </activity>
+        <activity
+            android:name="com.rabidmongeese.CloudReminders.MapActivity"
+            android:label="@string/title_activity_map" >
         </activity>
     </application>
 
