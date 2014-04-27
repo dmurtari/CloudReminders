@@ -48,6 +48,10 @@
             android:name="com.rabidmongeese.CloudReminders.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
+        <activity
+            android:name="com.rabidmongeese.CloudReminders.ManageRemindersActivity"
+            android:label="@string/title_activity_manage_reminders" >
+        </activity>
     </application>
 
 </manifest>
