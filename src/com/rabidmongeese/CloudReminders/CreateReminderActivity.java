@@ -1,30 +1,46 @@
 package com.rabidmongeese.CloudReminders;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.google.android.maps.GeoPoint;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.os.Build;
 
-public class CreateReminderActivity extends Activity {
-
+public class CreateReminderActivity extends Activity implements OnClickListener {
+	private EditText reminderName, reminderAddress;
+	private ReminderSQLiteHelper db;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_reminder);
-
-		EditText reminderName = (EditText) findViewById(R.id.reminderName);
-		EditText reminderAddress = (EditText) findViewById(R.id.reminderAddress);
-		EditText reminderDescrip = (EditText) findViewById(R.id.reminderDescription);
 		
-		Button sumbitButton = (Button) findViewById(R.id.createReminderButton);
+		db = new ReminderSQLiteHelper(this);
+
+		reminderName = (EditText) findViewById(R.id.reminderName);
+		reminderAddress = (EditText) findViewById(R.id.reminderAddress);
+		
+		Button submitButton = (Button) findViewById(R.id.bCreateReminderButton);
+		
+		submitButton.setOnClickListener(this);
+		
 	}
 
 	@Override
@@ -62,6 +78,49 @@ public class CreateReminderActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bCreateReminderButton:
+			String title = reminderName.getText().toString();
+			String address = reminderAddress.getText().toString();
+			GeoPoint p = getLatLong(address);
+			double latitude = p.getLatitudeE6();
+			double longitude = p.getLongitudeE6();
+			db.addReminder(new Reminder(title, longitude, latitude));
+			Log.w("CreateReminder", longitude + " " + latitude);
+			break;
+		}
+		
+	}
+	
+	protected GeoPoint getLatLong(String strAddress){
+		Geocoder coder = new Geocoder(this);
+		List<Address> address;
+
+		try {
+		    address = coder.getFromLocationName(strAddress,5);
+		    if (address == null) {
+		        return null;
+		    }
+
+		    Address location = address.get(0);
+		    location.getLatitude();
+		    location.getLongitude();
+
+		    GeoPoint p1 = new GeoPoint((int) (location.getLatitude() * 1E6),
+		                      (int) (location.getLongitude() * 1E6));
+		    
+		    return p1;
+
+		} catch(IOException e) {
+		// Put up alert dialog if the address is not valid
+			return null;
+
+		}
+
 	}
 
 }

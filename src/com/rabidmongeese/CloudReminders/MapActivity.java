@@ -1,24 +1,47 @@
 package com.rabidmongeese.CloudReminders;
 
+import java.util.List;
+
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import com.google.android.gms.maps.*;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends Activity {
+	private GoogleMap map;
+	private ReminderSQLiteHelper db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		
+		db = new ReminderSQLiteHelper(this);
+		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+		        .getMap();
+		
+		List<Reminder> reminders = db.getAllReminders();
+		
+		for (Reminder r : reminders) {
+			Log.w("Cloud Reminders", r.getLatitude() + " " + r.getLongitude());
+			LatLng pos = new LatLng(r.getLatitude() / Math.pow(10, 6), r.getLongitude() / Math.pow(10,  6)); 
+			Marker m = map.addMarker(new MarkerOptions().position(pos).title(r.getText()));
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
+			map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+		}
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -55,5 +78,6 @@ public class MapActivity extends Activity {
 			return rootView;
 		}
 	}
+	
 
 }
