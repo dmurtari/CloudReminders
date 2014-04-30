@@ -3,6 +3,7 @@ package com.rabidmongeese.CloudReminders;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -22,11 +23,13 @@ public class ReminderSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "remindersManager";
     private static final String TABLE_REMINDERS = "reminders";
 
-    private static final String KEY_ID = "id";
-    private static final String KEY_TEXT = "reminderText";
+    private static final String KEY_ID = "_id";
+    public static final String KEY_TEXT = "reminderText";
     private static final String KEY_LONGITUDE = "longitude";
     private static final String KEY_LATITUDE = "latitude";
-
+    
+    private ReminderSQLiteHelper db;
+    private SQLiteDatabase mDb;
 
     public ReminderSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -105,6 +108,16 @@ public class ReminderSQLiteHelper extends SQLiteOpenHelper {
         }
 
         return reminders;
+    }
+    
+    public Cursor getAllRemindersCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_REMINDERS;
+
+        Log.e(LOG, query);
+
+        return db.rawQuery(query, null);
     }
 
     public int getRemindersCount() {
