@@ -14,5 +14,6 @@
     <string name="reminder_address">Address of reminder</string>
     <string name="reminder_description">Description</string>
     <string name="reminder_submit">Submit</string>
+	<string name="invalid_action_detail">Invalid action %1$s received.</string>
 
 </resources>

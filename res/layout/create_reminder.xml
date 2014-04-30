@@ -7,35 +7,37 @@
         android:id="@+id/reminderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/reminderAddress"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/reminder_name"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/reminderAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bCreateReminderButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:hint="@string/reminder_address"
-        android:inputType="textPostalAddress" >
+        android:inputType="text" >
 
         <requestFocus />
+
     </EditText>
     
+    <EditText
+    	android:id="@+id/reminderAddress"
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reminderName"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/reminderName"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/reminder_address"
+        android:inputType="textPostalAddress" />
+        
     <Button
         android:id="@+id/bCreateReminderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"        
         android:text="@string/reminder_submit" />
 
 </RelativeLayout>
