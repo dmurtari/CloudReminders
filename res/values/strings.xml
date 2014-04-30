@@ -11,4 +11,6 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_manage_reminders">ManageRemindersActivity</string>
 	<string name="invalid_action_detail">Invalid action %1$s received.</string>
+	<string name="reminder_name">Reminder name</string>
+	<string name="reminder_address">Location of reminder</string>
 </resources>
