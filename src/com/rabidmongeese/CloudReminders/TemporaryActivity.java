@@ -29,12 +29,8 @@ public class TemporaryActivity extends Activity {
         setListeners();
 	}
 	
-	private void displayListView(){
-		Log.w("Adding ", "Hello");
-		db.addReminder(new Reminder("hello", 105, 40));
-		
-		Cursor cursor = db.getAllRemindersCursor();
-		
+	private void displayListView(){		
+		Cursor cursor = db.getAllRemindersCursor();		
 		
 		// Database columns to read
 		String[] columns = new String[]{

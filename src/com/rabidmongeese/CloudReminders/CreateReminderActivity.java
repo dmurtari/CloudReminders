@@ -8,6 +8,7 @@ import com.google.android.maps.GeoPoint;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -90,6 +91,7 @@ public class CreateReminderActivity extends Activity implements OnClickListener 
 			double longitude = p.getLongitudeE6();
 			db.addReminder(new Reminder(title, longitude, latitude));
 			Log.w("CreateReminder", longitude + " " + latitude);
+			startActivity(new Intent(CreateReminderActivity.this, TemporaryActivity.class ));
 		}
 		
 	}
