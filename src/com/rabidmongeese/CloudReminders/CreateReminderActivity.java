@@ -91,6 +91,7 @@ public class CreateReminderActivity extends Activity implements OnClickListener 
 			double longitude = p.getLongitudeE6();
 			db.addReminder(new Reminder(title, longitude, latitude));
 			Log.w("CreateReminder", longitude + " " + latitude);
+			Toast.makeText(getBaseContext(), "Reminder successfully created", Toast.LENGTH_SHORT).show();
 			startActivity(new Intent(CreateReminderActivity.this, TemporaryActivity.class ));
 		}
 		
