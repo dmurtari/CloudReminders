@@ -112,7 +112,7 @@ public class MapActivity extends Activity {
 		@Override
 		public void onLocationChanged(Location location) {
 			for (Reminder r : reminders) {
-				if (distance(location.getLatitude(), location.getLongitude(), r.getLatitude(), r.getLongitude()) <= 10) {
+				if (distance(location.getLatitude(), location.getLongitude(), r.getLatitude(), r.getLongitude()) <= .02) {
 					Toast.makeText(getBaseContext(),
 							r.getText(),
 							Toast.LENGTH_LONG).show();

@@ -19,7 +19,8 @@
         android:id="@+id/reminderList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/mapButton" />
+        android:layout_below="@+id/mapButton"
+        android:paddingTop="20dp" />
 
     <Button
         android:id="@+id/createReminderButton"
