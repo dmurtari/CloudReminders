@@ -7,42 +7,35 @@
         android:id="@+id/reminderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_above="@+id/reminderAddress"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
         android:ems="10"
-        android:inputType="text" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/reminderDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/reminderAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:ems="10"
-        android:inputType="textMultiLine" />
-
-    <Button
-        android:id="@+id/bCreateReminderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/reminderDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
-        android:text="Submit" />
+        android:hint="@string/reminder_name"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/reminderAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/reminderDescription"
-        android:layout_below="@+id/reminderName"
-        android:layout_marginTop="66dp"
+        android:layout_above="@+id/bCreateReminderButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
         android:ems="10"
-        android:inputType="textPostalAddress" />
+        android:hint="@string/reminder_address"
+        android:inputType="textPostalAddress" >
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/bCreateReminderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/reminder_submit" />
 
 </RelativeLayout>
