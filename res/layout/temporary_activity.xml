@@ -9,18 +9,20 @@
         android:id="@+id/createReminderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="42dp"
         android:text="Create Reminder" />
 
     <Button
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/createReminderButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
+        android:layout_alignBaseline="@+id/createReminderButton"
+        android:layout_alignBottom="@+id/createReminderButton"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/createReminderButton"
         android:text="Map" />
 
 </RelativeLayout>
