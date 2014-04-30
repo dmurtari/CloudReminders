@@ -50,6 +50,10 @@ public class ReminderSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public String getText(){
+    	return KEY_TEXT;
+    }
+    
     public void addReminder(Reminder reminder) {
         SQLiteDatabase db = this.getWritableDatabase();
 

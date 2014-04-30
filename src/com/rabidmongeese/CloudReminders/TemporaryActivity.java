@@ -34,7 +34,7 @@ public class TemporaryActivity extends Activity {
 		
 		// Database columns to read
 		String[] columns = new String[]{
-				db.KEY_TEXT
+				db.getText()
 		};
 				
 		// Views that define where the columns will go
