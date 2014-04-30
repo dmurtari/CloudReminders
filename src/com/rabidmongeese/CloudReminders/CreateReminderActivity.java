@@ -24,7 +24,7 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class CreateReminderActivity extends Activity implements OnClickListener {
-	private EditText reminderName, reminderAddress;
+	private EditText reminderName, reminderAddress, reminderLat, reminderLng;
 	private ReminderSQLiteHelper db;
 	
 	@Override
@@ -36,8 +36,12 @@ public class CreateReminderActivity extends Activity implements OnClickListener 
 
 		reminderName = (EditText) findViewById(R.id.reminderName);
 		reminderAddress = (EditText) findViewById(R.id.reminderAddress);
+		reminderLat = (EditText) findViewById(R.id.etLatitude);
+		reminderLng = (EditText) findViewById(R.id.etLongitude);
 		
 		Button submitButton = (Button) findViewById(R.id.bCreateReminderButton);
+		Button sb = (Button) findViewById(R.id.bLatAdd);
+		sb.setOnClickListener(this);
 		
 		submitButton.setOnClickListener(this);
 		
@@ -82,8 +86,7 @@ public class CreateReminderActivity extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.bCreateReminderButton:
+		if (v.getId() == R.id.bCreateReminderButton) {
 			String title = reminderName.getText().toString();
 			String address = reminderAddress.getText().toString();
 			GeoPoint p = getLatLong(address);
@@ -91,7 +94,13 @@ public class CreateReminderActivity extends Activity implements OnClickListener 
 			double longitude = p.getLongitudeE6();
 			db.addReminder(new Reminder(title, longitude, latitude));
 			Log.w("CreateReminder", longitude + " " + latitude);
-			break;
+		}
+		else if (v.getId() == R.id.bLatAdd) {
+			double latitude = Double.parseDouble(reminderLat.getText().toString());
+			double longitude = Double.parseDouble(reminderLng.getText().toString());
+			String title = reminderName.getText().toString();
+			db.addReminder(new Reminder(title, longitude, latitude));
+			Log.w("CreateReminder", longitude + " " + latitude);
 		}
 		
 	}
